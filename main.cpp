@@ -59,7 +59,7 @@ int main()
 
 
 //Gestion des events et inputs
-void InputHandler(Event event, RenderWindow& window) 
+void InputHandler(Event event, RenderWindow& window)
 {
 
 	//Fermer la fenetre si on clic sur la croix
@@ -70,6 +70,59 @@ void InputHandler(Event event, RenderWindow& window)
 
 	}
 
+	//Gestion des input (clavier souris)
+	//Detection btp apputé
+	if (event.type == Event::KeyPressed)
+	{
+
+		if (event.key.code == Keyboard::Escape)
+		{
+			window.close();
+		}
+
+		if (event.key.code == Keyboard::Left)
+		{
+			SetText(txt, "Touche Gauche!");
+		}
+
+		if (event.key.code == Keyboard::Right)
+		{
+			SetText(txt, "Touche Droite!");
+		}
+
+	}
+
+	//Detection btp souris
+	if (event.type == Event::MouseButtonPressed)
+	{
+		if (event.mouseButton.button == Mouse::Left)
+		{
+			SetText(txt, "Clique Gauche!");
+		}
+
+		if (event.mouseButton.button == Mouse::Right)
+		{
+			SetText(txt, "Clique Droit!");
+		}
+	}
+
+	//Autre facon de gerer (clavier souris)
+	//Pour contrer le probleme de sacadement
+	//Detection btp apputé
+	if (Keyboard::isKeyPressed(Keyboard::Up))
+	{
+		SetText(txt, "Up");
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		SetText(txt, "Down");
+	}
+
+	if (Mouse::isButtonPressed(Mouse::Middle))
+	{
+		SetText(txt, "Middle");
+	}
 }
 
 //Charger la police d'ecriture
